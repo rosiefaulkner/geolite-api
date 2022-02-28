@@ -6,7 +6,7 @@ use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
-// Get All Customers
+// Get All Users
 
 $app->get('/api/customers', function (Request $request, Response $response) {
     $sql = "SELECT * FROM customers";
@@ -21,13 +21,13 @@ $app->get('/api/customers', function (Request $request, Response $response) {
         $customers = $stmt->fetchAll((PDO::FETCH_OBJ));
         $db = null;
         $response->getBody()->write(json_encode($customers));
-        return $response;
     } catch (PDOException $e) {
-        echo '{"error": {"text": ' . $e->getMessage() . '}}';
+        $response->getBody()->write(json_encode($e->getMessage()));
     }
+    return $response;
 });
 
-// Get Single Customer
+// Get Single User
 
 $app->get('/api/customer/{id}', function (Request $request, Response $response) {
     $id = $request->getAttribute('id');
@@ -43,13 +43,13 @@ $app->get('/api/customer/{id}', function (Request $request, Response $response) 
         $customer = $stmt->fetchAll((PDO::FETCH_OBJ));
         $db = null;
         $response->getBody()->write(json_encode($customer));
-        return $response;
     } catch (PDOException $e) {
-        echo '{"error": {"text": ' . $e->getMessage() . '}}';
+        $response->getBody()->write(json_encode($e->getMessage()));
     }
+    return $response;
 });
 
-// Add Customer
+// Add User
 
 $app->post('/api/customer/add', function (Request $request, Response $response) {
     $first_name = $request->getParam('first_name');
@@ -81,13 +81,13 @@ $app->post('/api/customer/add', function (Request $request, Response $response) 
         $stmt->execute();
         $message = 'Notice: Customer Added';
         $response->getBody()->write(json_encode($message));
-        return $response;
     } catch (PDOException $e) {
-        echo '{"error": {"text": ' . $e->getMessage() . '}}';
+        $response->getBody()->write(json_encode($e->getMessage()));
     }
+    return $response;
 });
 
-// Update Customer
+// Update User
 
 $app->put('/api/customer/update/{id}', function (Request $request, Response $response) {
     $id = $request->getAttribute('id');
@@ -125,10 +125,33 @@ $app->put('/api/customer/update/{id}', function (Request $request, Response $res
         $stmt->bindParam(':state',          $state);
 
         $stmt->execute();
-        $message = 'Notice: Customer Updated';
+        $message = 'Notice: User Updated';
         $response->getBody()->write(json_encode($message));
-        return $response;
     } catch (PDOException $e) {
-        echo '{"error": {"text": ' . $e->getMessage() . '}}';
+        $response->getBody()->write(json_encode($e->getMessage()));
     }
+    return $response;
+});
+
+// Delete Single User
+
+$app->delete('/api/customer/delete/{id}', function (Request $request, Response $response) {
+    $id = $request->getAttribute('id');
+    $sql = "DELETE FROM customers WHERE id = $id";
+
+    try {
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $db = null;
+        $message = 'Notice: User Deleted';
+        $response->getBody()->write(json_encode($message));
+    } catch (PDOException $e) {
+        $response->getBody()->write(json_encode($e->getMessage()));
+    }
+    return $response;
 });
