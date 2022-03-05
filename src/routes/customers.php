@@ -6,6 +6,7 @@ use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
+
 // Get All Users
 
 $app->get('/api/customers', function (Request $request, Response $response) {

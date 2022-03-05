@@ -5,7 +5,7 @@
         "phpunit/phpunit": "^9.5",
         "phpunit/php-code-coverage": "^9.2.3"
     },
-    "require":{
+    "require": {
         "php": "^7.2.5 || ^8",
         "slim/slim": "4.*",
         "slim/http": "^1.2",
@@ -14,7 +14,9 @@
         "nyholm/psr7": "^1.5",
         "nyholm/psr7-server": "^1.0",
         "guzzlehttp/psr7": "^2",
-        "laminas/laminas-diactoros": "^2.8"
+        "laminas/laminas-diactoros": "^2.8",
+        "geoip2/geoip2": "^2.12",
+        "slim/php-view": "^3.1"
     },
     "autoload": {
         "psr-4": {
