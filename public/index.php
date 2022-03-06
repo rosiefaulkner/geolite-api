@@ -1,39 +1,38 @@
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Selective\BasePath\BasePathMiddleware;
+
+use DI\Container;
 use Slim\Factory\AppFactory;
-use Slim\Views\PhpRenderer;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/config/geo.php';
+require  __DIR__ . '/../vendor/autoload.php';
 
+// Create Container
+$container = new Container();
+AppFactory::setContainer($container);
 
-$app = AppFactory::create();
-$app->setBasePath('/public/index.php');
-
-// Add Slim routing middleware
-$app->addRoutingMiddleware();
-
-// Set the base path to run the app in a subdirectory.
-// This path is used in urlFor().
-$app->add(new BasePathMiddleware($app));
-
-$app->addErrorMiddleware(true, true, true);
-
-// Define app routes
-// $app->get('/', function (Request $request, Response $response) {
-//     $response->getBody()->write('Hello, World!');
-//     return $response;
-// })->setName('root');
-
-$app->get('/', function (Request $request, Response $response, $args) {
-    $renderer = new PhpRenderer(__DIR__ . '/../src/templates/');
-    return $renderer->render($response, 'ipform.html', $args);
+// Set view in Container
+$container->set('view', function() {
+    return Twig::create(__DIR__ . '/../templates',
+        ['cache' => __DIR__ . '/../cache']);
 });
-// Login Routes
-//require __DIR__ . '/../src/routes/cities.php';
-//require __DIR__ . '/../src/templates/login.html';
 
-// Run app
+// Create App
+$app = AppFactory::create();
+
+// Add Twig-View Middleware
+$app->add(TwigMiddleware::createFromContainer($app));
+
+// Example route
+$app->get('/', function ($request, $response, $args) {
+    return $this->get('view')->render($response, 'ipform.twig');
+});
+$app->get('/{ip}', function ($request, $response, $args) {
+    $ip = $request->getAttribute('ip');
+    return $this->get('view')->render($response, 'ipform.twig', [
+        'ip' => $args['ip'],
+    ]);
+});
+
+// Run the app
 $app->run();
