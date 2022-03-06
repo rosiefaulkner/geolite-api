@@ -84,7 +84,10 @@ class __TwigTemplate_222ef066230ff17113f5b6efa8b44aa5c2fadc3370ebe200f99b15a8530
               <div class=\"card-body\">
                 <!-- Form Input -->
                 <form
-                  action=\"index.php\"
+                  action=\"";
+        // line 51
+        echo twig_escape_filter($this->env, ($context["ip"] ?? null), "html", null, true);
+        echo "\"
                   method=\"POST\"
                   enctype=\"multipart/form-data\"
                 >
@@ -101,7 +104,7 @@ class __TwigTemplate_222ef066230ff17113f5b6efa8b44aa5c2fadc3370ebe200f99b15a8530
                     >
 ";
         // line 66
-        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["ip"] ?? null), "html", null, true);
         echo "</textarea
                     >
                     <label for=\"ip\">Input your IP Address. Feel free to input as many as you'd like.</label>
@@ -157,7 +160,7 @@ class __TwigTemplate_222ef066230ff17113f5b6efa8b44aa5c2fadc3370ebe200f99b15a8530
                     <div id=\"markdown-output\">
                       <div id=\"copy-html\">";
         // line 119
-        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["html"] ?? null), "html", null, true);
         echo "</div>
                     </div>
                   </div>
@@ -211,7 +214,7 @@ class __TwigTemplate_222ef066230ff17113f5b6efa8b44aa5c2fadc3370ebe200f99b15a8530
 
     public function getDebugInfo()
     {
-        return array (  160 => 119,  104 => 66,  37 => 1,);
+        return array (  163 => 119,  107 => 66,  89 => 51,  37 => 1,);
     }
 
     public function getSourceContext()
