@@ -79,3 +79,7 @@
  .primary-text {
    color: #4384F3;
  }
+ #output-label {
+    color: #2e2e2e;
+    font-weight: 500;
+ }
