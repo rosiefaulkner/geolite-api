@@ -4,7 +4,7 @@
 ### In the future, the application will be able to habdle many IPs input 
 ### at once and return location data for bulk inputs
 
-##Installation
+## Installation
 
 Run `git clone https://github.com/rosiefaulkner/geolite-api.git`
 
