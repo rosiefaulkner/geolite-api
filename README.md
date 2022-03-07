@@ -1,8 +1,8 @@
 # geolite-api
-### A simple IP location identifier tool using SlimPHP 4 and Twig
-### Currently, the application takes only one IP at a time. 
-### In the future, the application will be able to habdle many IPs input 
-### at once and return location data for bulk inputs
+A simple IP location identifier tool using SlimPHP 4 and Twig
+Currently, the application takes only one IP at a time. 
+In the future, the application will be able to habdle many IPs input 
+at once and return location data for bulk inputs
 
 ## Installation
 
