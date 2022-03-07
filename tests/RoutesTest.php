@@ -51,7 +51,7 @@ class RoutesTest extends \PHPUnit\Framework\TestCase
      */
     public function testConverToHtml($ip, $isoCode, $postalCode, $cityName, $timeZone, $accuracyRadius)
     {
-        $reader = new Reader('GeoIP2-City.mmdb');
+        $reader = new Reader('/../public/GeoIP2-City.mmdb');
         $this->assertEquals(
             $ip,
             [
