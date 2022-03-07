@@ -22,42 +22,42 @@ Be sure to have the latest version of PHP. This application's dependencies requi
 
 ```bash
 <div class="md-form">
-			<em class="fa fa-pencil prefix grey-text"></em>
-							<textarea type="text" name="ip" id="ip" class="md-textarea icon">
-                  {{ ip }}
-              </textarea>
-			<label for="ip">Input an IP Address.</label>
+<em class="fa fa-pencil prefix grey-text"></em>
+<textarea type="text" name="ip" id="ip" class="md-textarea icon">
+{{ ip }}
+</textarea>
+<label for="ip">Input an IP Address.</label>
 </div>
 
 ```
 
-```
+```Twig
 <div id="ip-output">
-		<div>
-				{% if ip|default %}
-						<p>
-              <span id="output-label copy-html">Country Code:</span>
-              {{ isoCode }}
-            </p>
-            <p>
-              <span id="output-label copy-html">Postal Code:</span>
-              {{ postalCode }}</p>
-            <p>
-              <span id="output-label copy-html">City Name:</span>
-              {{ cityName }}</p>
-            <p>
-              <span id="output-label copy-html">Time Zone:</span>
-              {{ timeZone }}</p>
-            <p>
-              <span id="output-label copy-html">Accuracy Radius:</span>
-              {{ accuracyRadius }}</p>
-				{% endif %}
-		</div>
-		<div>
-				{% if error|default %}
-						{{ error }}
-				{% endif %}
-		</div>
+<div>
+{% if ip|default %}
+<p>
+<span id="output-label copy-html">Country Code:</span>
+{{ isoCode }}
+</p>
+<p>
+<span id="output-label copy-html">Postal Code:</span>
+{{ postalCode }}</p>
+<p>
+<span id="output-label copy-html">City Name:</span>
+{{ cityName }}</p>
+<p>
+<span id="output-label copy-html">Time Zone:</span>
+{{ timeZone }}</p>
+<p>
+<span id="output-label copy-html">Accuracy Radius:</span>
+{{ accuracyRadius }}</p>
+{% endif %}
+</div>
+<div>
+{% if error|default %}
+{{ error }}
+{% endif %}
+</div>
 </div>
 ```
 
