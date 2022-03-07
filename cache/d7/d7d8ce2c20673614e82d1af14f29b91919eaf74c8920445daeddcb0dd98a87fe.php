@@ -84,10 +84,7 @@ class __TwigTemplate_222ef066230ff17113f5b6efa8b44aa5c2fadc3370ebe200f99b15a8530
               <div class=\"card-body\">
                 <!-- Form Input -->
                 <form
-                  action=\"";
-        // line 51
-        echo twig_escape_filter($this->env, ($context["ip"] ?? null), "html", null, true);
-        echo "\"
+                  action=\"/\"
                   method=\"POST\"
                   enctype=\"multipart/form-data\"
                 >
@@ -214,7 +211,7 @@ class __TwigTemplate_222ef066230ff17113f5b6efa8b44aa5c2fadc3370ebe200f99b15a8530
 
     public function getDebugInfo()
     {
-        return array (  163 => 119,  107 => 66,  89 => 51,  37 => 1,);
+        return array (  160 => 119,  104 => 66,  37 => 1,);
     }
 
     public function getSourceContext()
