@@ -1,16 +1,14 @@
 <?php
 
-namespace Rosiefaulkner\API;
+declare(strict_types=1);
+
+namespace Tests;
 
 use DI\ContainerBuilder;
 use Exception;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 use Slim\Factory\AppFactory;
-use Slim\Psr7\Factory\StreamFactory;
-use Slim\Psr7\Headers;
-use Slim\Psr7\Request as SlimRequest;
-use Slim\Psr7\Uri;
 use GeoIp2\Database\Reader;
 
 class RoutesTest extends \PHPUnit\Framework\TestCase
