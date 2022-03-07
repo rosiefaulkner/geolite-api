@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Rosiefaulkner\\API\\": "src/"
+            "Rosiefaulkner\\API\\": "bootstrap/"
         }
     },
     "post-install-cmd": [
